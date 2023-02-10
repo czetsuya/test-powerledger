@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: Powerledger Test
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 5
+        generate_statistics: false
+    show-sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migrations
+    baseline-on-migrate: true
+    user: sa
+    password: sa
+  h2:
+    console:
+      enabled: true
+      path: /db
+
+logging:
+  level:
+    root: info
+    com.powerledger: debug
+    org.springframework: warn
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: error
