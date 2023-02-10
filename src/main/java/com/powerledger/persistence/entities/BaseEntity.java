@@ -25,9 +25,6 @@ public abstract class BaseEntity implements Serializable {
   @Serial
   private static final long serialVersionUID = 3986494663579679129L;
 
-  public static final int NB_PRECISION = 23;
-  public static final int NB_SCALE = 12;
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
