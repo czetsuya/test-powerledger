@@ -12,8 +12,8 @@ spring:
       hibernate:
         jdbc:
           batch_size: 5
-        generate_statistics: false
-    show-sql: true
+        generate_statistics: true
+    show-sql: false
   flyway:
     enabled: true
     locations: classpath:db/migrations

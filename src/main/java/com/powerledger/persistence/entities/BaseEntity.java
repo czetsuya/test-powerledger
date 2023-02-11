@@ -10,11 +10,13 @@ import jakarta.persistence.Version;
 import java.io.Serial;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-@Data
+@Getter
+@Setter
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,7 +28,7 @@ public abstract class BaseEntity implements Serializable {
   private static final long serialVersionUID = 3986494663579679129L;
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(generator = "ID_GENERATOR", strategy = GenerationType.AUTO)
   @Column(name = "id")
   private Long id;
 
