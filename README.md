@@ -22,6 +22,15 @@ not mandatory and won't impact the final outcome of the assessment.
 Please implement it in Java and check your code into either Github, Gitlab or Bitbucket to allow
 us to review your test.
 
+## Build and Deployment
+
+The following commands build a docker image of the project locally:
+
+```
+docker build . -f docker/Dockerfile -t czetsuyatech/powerledger
+docker run czetsuyatech/powerledger
+ ```
+
 ## Testing
 
 To run both unit and integration tests.
