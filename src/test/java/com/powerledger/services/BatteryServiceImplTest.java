@@ -35,7 +35,7 @@ class BatteryServiceImplTest {
   void shouldCreateBatteryEntitiesGivenPojos() throws ExecutionException, InterruptedException {
 
     Batteries batteries = Batteries.builder()
-        .batteries(BatteryFixtures.getBatteries())
+        .values(BatteryFixtures.getBatteries())
         .build();
 
     batteryService.createBatteries(batteries)

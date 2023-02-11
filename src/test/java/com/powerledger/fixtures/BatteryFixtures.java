@@ -47,7 +47,7 @@ public class BatteryFixtures {
   public static BatteriesV1 getBatteryModels() {
     return
         BatteriesV1.builder()
-            .batteries(
+            .values(
                 List.of(
                     getBatteryModel("B", 2, 20),
                     getBatteryModel("F", 6, 60),

@@ -20,7 +20,8 @@ class BatteryControllerFunctionalTest extends FunctionalRestTest {
 
     MockHttpServletRequestBuilder req = createRequest();
 
-    performAsync(req, status().isOk());
+    performAsync(req, status().isOk())
+        .andExpect(status().isOk());
   }
 
   @Test
@@ -49,16 +50,14 @@ class BatteryControllerFunctionalTest extends FunctionalRestTest {
   }
 
   @Test
-  void shouldThrowAnErrorWhenListIsEmpty() {
+  void shouldThrowAnErrorWhenListIsEmpty() throws JsonProcessingException {
 
-    Assertions.assertThrows(AssertionError.class, () -> {
-      MockHttpServletRequestBuilder req = MockMvcRequestBuilders
-          .post(EndpointConstants.PATH_BATTERIES)
-          .contentType(MediaType.APPLICATION_JSON)
-          .content(objectMapper.writeValueAsString(new BatteriesV1()));
+    MockHttpServletRequestBuilder req = MockMvcRequestBuilders
+        .post(EndpointConstants.PATH_BATTERIES)
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(objectMapper.writeValueAsString(new BatteriesV1()));
 
-      performAsync(req, status().isBadRequest());
-    });
+    Assertions.assertThrows(AssertionError.class, () -> performAsync(req, status().isBadRequest()));
   }
 
   private MockHttpServletRequestBuilder createRequest() throws JsonProcessingException {

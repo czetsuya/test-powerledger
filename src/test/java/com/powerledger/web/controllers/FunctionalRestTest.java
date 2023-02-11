@@ -17,20 +17,16 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.web.context.WebApplicationContext;
 
 @ActiveProfiles("test")
 @ExtendWith({SpringExtension.class})
 @SpringBootTest(classes = {Application.class})
 @Tag("functional")
 @AutoConfigureMockMvc
-public class FunctionalRestTest {
+public abstract class FunctionalRestTest {
 
   @Autowired
   protected ObjectMapper objectMapper;
-
-  @Autowired
-  private WebApplicationContext context;
 
   @Autowired
   protected MockMvc mockMvc;

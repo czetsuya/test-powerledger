@@ -16,5 +16,5 @@ public class BatteriesV1 {
 
   @NotNull
   @NotEmpty
-  private List<BatteryV1> batteries;
+  private List<BatteryV1> values;
 }

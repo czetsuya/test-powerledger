@@ -23,13 +23,13 @@ class Web2ServiceMapperTest {
   void shouldConvertBatteryModelToPojo() {
 
     BatteriesV1 batteriesV1 = BatteriesV1.builder()
-        .batteries(List.of(
+        .values(List.of(
             BatteryFixtures.getBatteryModel("batt1", 1, 100)
         ))
         .build();
 
     Batteries actual = web2ServiceMapper.asBatteries(batteriesV1);
-    Battery battery = actual.getBatteries().get(0);
+    Battery battery = actual.getValues().get(0);
 
     assertEquals("batt1", battery.getName());
     assertEquals(1, battery.getPostCode());

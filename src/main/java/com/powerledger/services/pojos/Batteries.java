@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Batteries {
 
-  private List<Battery> batteries;
+  private List<Battery> values;
 }

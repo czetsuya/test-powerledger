@@ -9,7 +9,6 @@ import jakarta.transaction.Transactional;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -29,9 +28,10 @@ public class BatteryServiceImpl implements BatteryService {
     log.debug("Creating batteries");
 
     return CompletableFuture.runAsync(() -> batteryRepository.saveAll(
-        batteries.getBatteries().stream()
+        batteries.getValues().stream()
             .map(service2EntityMapper::asBatteryEntity)
-            .collect(Collectors.toList())));
+            .toList())
+    );
   }
 
   @Override

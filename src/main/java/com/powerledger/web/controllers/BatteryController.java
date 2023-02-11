@@ -35,7 +35,7 @@ public class BatteryController {
   @PostMapping
   public CompletableFuture<Void> createBatteries(@RequestBody @NotNull @Valid BatteriesV1 batteries) {
 
-    log.info("Creating list of batteries={}", batteries.getBatteries().size());
+    log.info("Creating list of batteries={}", batteries.getValues().size());
 
     return batteryService.createBatteries(web2ServiceMapper.asBatteries(batteries));
   }
