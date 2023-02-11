@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 class Web2ServiceMapperTest {
 
-  private Web2ServiceMapper web2ServiceMapper = new Web2ServiceMapperImpl();
+  private final Web2ServiceMapper web2ServiceMapper = new Web2ServiceMapperImpl();
 
   @BeforeEach
   void setUp() {

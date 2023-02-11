@@ -6,7 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.powerledger.fixtures.BatteryFixtures;
 import com.powerledger.web.controllers.models.BatteriesV1;
-import com.powerledger.web.controllers.models.BatteryPostRangeV1;
+import com.powerledger.web.controllers.models.BatteryPostRangeResponseV1;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
@@ -40,7 +40,7 @@ class BatteryControllerFunctionalTest extends FunctionalRestTest {
         .getResponse()
         .getContentAsString();
 
-    BatteryPostRangeV1 result = objectMapper.readValue(resp, BatteryPostRangeV1.class);
+    BatteryPostRangeResponseV1 result = objectMapper.readValue(resp, BatteryPostRangeResponseV1.class);
 
     assertEquals(4, result.getNames().size());
     assertEquals("B", result.getNames().get(0));

@@ -7,9 +7,7 @@ import com.powerledger.services.pojos.Batteries;
 import com.powerledger.services.pojos.BatteryPostRange;
 import jakarta.transaction.Transactional;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -30,19 +28,18 @@ public class BatteryServiceImpl implements BatteryService {
 
     log.debug("Creating batteries");
 
-    return CompletableFuture.runAsync(() -> {
-      batteryRepository.saveAll(batteries.getBatteries().stream()
-          .map(service2EntityMapper::asBatteryEntity)
-          .collect(Collectors.toList()));
-    });
+    return CompletableFuture.runAsync(() -> batteryRepository.saveAll(
+        batteries.getBatteries().stream()
+            .map(service2EntityMapper::asBatteryEntity)
+            .collect(Collectors.toList())));
   }
 
   @Override
   public CompletableFuture<BatteryPostRange> getBatteries(int from, int to) {
 
     return CompletableFuture.supplyAsync(() -> {
-      List<BatteryEntity> batteries = Optional.ofNullable(batteryRepository.findByPostCodeBetween(from, to))
-          .orElse(new ArrayList<>());
+
+      List<BatteryEntity> batteries = batteryRepository.findByPostCodeBetween(from, to);
 
       return BatteryPostRange.builder()
           .names(getSortedNames(batteries))
@@ -64,7 +61,7 @@ public class BatteryServiceImpl implements BatteryService {
     return arr.stream()
         .mapToDouble(BatteryEntity::getWattCapacity)
         .average()
-        .getAsDouble();
+        .orElse(0d);
   }
 
   private List<String> getSortedNames(final List<BatteryEntity> arr) {

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BatteryPostRangeV1 {
+public class BatteryPostRangeResponseV1 {
 
   private List<String> names;
   private double totalWatts;

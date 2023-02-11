@@ -21,3 +21,11 @@ watt capacity.
 not mandatory and won't impact the final outcome of the assessment.
 Please implement it in Java and check your code into either Github, Gitlab or Bitbucket to allow
 us to review your test.
+
+## Testing
+
+To run both unit and integration tests.
+
+```
+mvn clean verify
+```

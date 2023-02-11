@@ -4,7 +4,7 @@ import com.powerledger.mappers.Service2WebMapper;
 import com.powerledger.mappers.Web2ServiceMapper;
 import com.powerledger.services.BatteryService;
 import com.powerledger.web.controllers.models.BatteriesV1;
-import com.powerledger.web.controllers.models.BatteryPostRangeV1;
+import com.powerledger.web.controllers.models.BatteryPostRangeResponseV1;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.util.concurrent.CompletableFuture;
@@ -42,7 +42,7 @@ public class BatteryController {
 
   @ResponseStatus(value = HttpStatus.OK)
   @GetMapping
-  public CompletableFuture<BatteryPostRangeV1> getBatteries(@RequestParam(EndpointConstants.PARAM_FROM) int from,
+  public CompletableFuture<BatteryPostRangeResponseV1> getBatteries(@RequestParam(EndpointConstants.PARAM_FROM) int from,
       @RequestParam(EndpointConstants.PARAM_TO) int to) {
 
     log.info("Retrieving batteries from={}, to={}", from, to);
