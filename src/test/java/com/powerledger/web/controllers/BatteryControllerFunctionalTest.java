@@ -13,7 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-class BatteryControllerTest extends FunctionalRestTest {
+class BatteryControllerFunctionalTest extends FunctionalRestTest {
 
   @Test
   void shouldCreateBatteriesOk() throws Exception {
@@ -49,7 +49,7 @@ class BatteryControllerTest extends FunctionalRestTest {
   }
 
   @Test
-  void shouldThrowAnErrorWhenListIsEmpty() throws Exception {
+  void shouldThrowAnErrorWhenListIsEmpty() {
 
     Assertions.assertThrows(AssertionError.class, () -> {
       MockHttpServletRequestBuilder req = MockMvcRequestBuilders
